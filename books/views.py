@@ -11,6 +11,7 @@ def get_books_api(request: HttpRequest) -> JsonResponse:
         list(books),
         safe=False,
         json_dumps_params={'ensure_ascii': False},
+        content_type="application/json; charset=utf-8",
         )
 
 
@@ -22,6 +23,7 @@ def get_book_api(request: HttpRequest, book_id) -> JsonResponse:
             book_dict,
             safe=False,
             json_dumps_params={'ensure_ascii': False},
+            content_type="application/json; charset=utf-8",
             )
     except Book.DoesNotExist:
         return JsonResponse({}, status=404)
